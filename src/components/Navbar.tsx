@@ -1,9 +1,16 @@
 import { motion } from "motion/react";
-import { Menu, X, ArrowRight, Globe, ChevronDown } from "lucide-react";
+import { Menu, X, ArrowRight, Globe, ChevronDown, Share2, Check } from "lucide-react";
 import { useState } from "react";
 
 export default function Navbar() {
    const [isOpen, setIsOpen] = useState(false);
+   const [copied, setCopied] = useState(false);
+
+  const handleShare = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const navLinks = [
   ];
@@ -37,7 +44,23 @@ export default function Navbar() {
                 English
                 <ChevronDown className="w-3 h-3 text-white/40" />
               </button>
-                  
+
+              <button 
+                onClick={handleShare}
+                className="flex items-center gap-2 px-4 py-2 rounded-full bg-brand-emerald text-black text-xs font-bold hover:scale-105 transition-all active:scale-95"
+              >
+                {copied ? (
+                  <>
+                    <Check className="w-3.5 h-3.5" />
+                    Copied!
+                  </>
+                ) : (
+                  <>
+                    <Share2 className="w-3.5 h-3.5" />
+                    Share Link
+                  </>
+                )}
+              </button>
             </div>
           </div>
 
