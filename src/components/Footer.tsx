@@ -119,15 +119,11 @@ export const Footer = () => {
         ))}
       </div>
 
+      
       <div className="relative z-10 max-w-7xl mx-auto px-4 flex flex-col items-center">
         {/* Language Selector Top Right */}
-        <div className="absolute top-0 right-8">
-          <button className="flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-900/50 border border-white/10 text-xs font-medium text-zinc-400 hover:text-white hover:border-white/20 transition-all">
-            <Globe className="w-4 h-4 text-purple-400" />
-            <span>English</span>
-            <ChevronDown className="w-3 h-3" />
-          </button>
-        </div>
+         <div className="absolute top-0 right-8">
+        </div> 
 
         {/* Join Badge */}
         <motion.div
