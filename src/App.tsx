@@ -9,6 +9,7 @@ import Vision from "./components/Vision";
 import Miners from "./components/Miners";
 import PredictMe from "./components/PredictMe";
 import CreatorBenefits from "./components/CreatorBenefits";
+import IillooSection from "./components/IillooSection";
 import IntelligenceLayer from "./components/IntelligenceLayer";
 import Pillars from "./components/Pillars";
 import Features from "./components/Features";
@@ -26,6 +27,7 @@ export default function App() {
         <Miners />
         <PredictMe />
         <CreatorBenefits />
+        <IillooSection />
         <IntelligenceLayer />
         <Pillars />
         <Features />

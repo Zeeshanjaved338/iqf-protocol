@@ -275,7 +275,7 @@ const FloatingCard = ({ icon: Icon, title, description, color, delay = 0, x = 0,
 );
 
 export default function CreatorBenefits() {
-  const [showPrediction, setShowPrediction] = useState(false);
+  const [predictionStep, setPredictionStep] = useState<'cta' | 'creator' | 'stake'>('cta');
 
   return (
     <section className="relative py-32 overflow-hidden bg-[#0a0a0c]">
@@ -381,10 +381,10 @@ export default function CreatorBenefits() {
             </div>
           </div>
 
-          {/* Right Column: Content or Prediction Window (7/12) */}
+          {/* Right Column: Multi-step Prediction Flow (7/12) */}
           <div className="lg:col-span-7 relative min-h-[600px]">
             <AnimatePresence mode="wait">
-              {!showPrediction ? (
+              {predictionStep === 'cta' && (
                 <motion.div
                   key="cta"
                   initial={{ opacity: 0, y: 20 }}
@@ -401,7 +401,7 @@ export default function CreatorBenefits() {
 
                   <div className="relative inline-block group">
                     <button 
-                      onClick={() => setShowPrediction(true)}
+                      onClick={() => setPredictionStep('creator')}
                       className="px-8 py-4 bg-brand-dark border border-brand-emerald/50 rounded-xl text-white font-bold transition-all hover:glow-cyan flex items-center gap-2"
                     >
                       <Plus className="w-4 h-4" />
@@ -421,11 +421,14 @@ export default function CreatorBenefits() {
                     </motion.div>
                   </div>
                 </motion.div>
-              ) : (
+              )}
+
+              {predictionStep === 'creator' && (
                 <motion.div
                   key="prediction"
                   initial={{ opacity: 0, scale: 0.95, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: -20 }}
                   className="glass rounded-[32px] border border-white/10 p-8 shadow-2xl space-y-8"
                 >
                   <div className="flex items-center gap-3">
@@ -589,11 +592,135 @@ export default function CreatorBenefits() {
                       </div>
                     </div>
 
-                    <button className="w-full py-5 bg-brand-dark border border-brand-emerald/50 text-white font-black uppercase tracking-[0.2em] rounded-2xl hover:glow-cyan transition-all flex items-center justify-center gap-3">
+                    <button 
+                      onClick={() => setPredictionStep('stake')}
+                      className="w-full py-5 bg-brand-dark border border-brand-emerald/50 text-white font-black uppercase tracking-[0.2em] rounded-2xl hover:glow-cyan transition-all flex items-center justify-center gap-3"
+                    >
                       <Sparkles className="w-5 h-5" />
                       Make Prediction
                     </button>
                   </div>
+                </motion.div>
+              )}
+
+              {predictionStep === 'stake' && (
+                <motion.div
+                  key="stake"
+                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  className="glass rounded-[32px] border border-white/10 p-8 shadow-2xl space-y-8"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-brand-purple/20 flex items-center justify-center">
+                      <Sparkles className="w-4 h-4 text-brand-purple" />
+                    </div>
+                    <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/40">Prediction Window</span>
+                  </div>
+
+                  <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-tight">
+                    Will BTC reach $1M By year 2030?
+                  </h2>
+
+                  <div className="p-6 rounded-2xl bg-brand-purple/5 border border-brand-purple/20 space-y-6 relative overflow-hidden">
+                    <div className="flex justify-between relative z-10">
+                      <div className="space-y-1">
+                        <div className="flex items-center gap-2 text-[10px] font-bold text-white/30 uppercase tracking-widest">
+                          <Users className="w-3 h-3 text-brand-purple/40" /> Votes
+                        </div>
+                        <div className="text-xl font-black flex items-center gap-2">
+                          50,000 <span className="text-[10px] text-brand-emerald">↑</span>
+                        </div>
+                      </div>
+                      <div className="space-y-1 text-right">
+                        <div className="flex items-center gap-2 justify-end text-[10px] font-bold text-white/30 uppercase tracking-widest">
+                          <Coins className="w-3 h-3 text-brand-purple/40" /> Staked Volume
+                        </div>
+                        <div className="text-xl font-black">250K</div>
+                      </div>
+                    </div>
+                    
+                    <div className="h-24 w-full relative">
+                      <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 400 100">
+                        <motion.path
+                          initial={{ pathLength: 0, opacity: 0 }}
+                          animate={{ pathLength: 1, opacity: 1 }}
+                          transition={{ duration: 2, ease: "easeInOut" }}
+                          d="M0,50 C50,20 100,80 150,50 C200,20 250,80 300,50 C350,20 400,50 L400,100 L0,100 Z"
+                          fill="url(#waveGradient3)"
+                          className="opacity-20"
+                        />
+                        <motion.path
+                          initial={{ pathLength: 0 }}
+                          animate={{ pathLength: 1 }}
+                          transition={{ duration: 2, ease: "easeInOut" }}
+                          d="M0,50 C50,20 100,80 150,50 C200,20 250,80 300,50 C350,20 400,50"
+                          stroke="#a855f7"
+                          strokeWidth="3"
+                          fill="none"
+                          strokeLinecap="round"
+                        />
+                        <defs>
+                          <linearGradient id="waveGradient3" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor="#a855f7" />
+                            <stop offset="100%" stopColor="transparent" />
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                    </div>
+                    <div className="flex justify-between text-[8px] font-mono text-white/20 uppercase tracking-widest">
+                      <span>10 days ago</span>
+                      <span className="text-brand-purple font-bold">53% Yes</span>
+                      <span>Now</span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2 text-white/40">
+                      <TrendingUp className="w-4 h-4" />
+                      <span className="text-[10px] font-bold uppercase tracking-widest">Your Prediction</span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="p-6 rounded-2xl bg-brand-emerald/5 border border-brand-emerald/20 flex flex-col items-center gap-2 group cursor-pointer hover:bg-brand-emerald/10 transition-all">
+                        <span className="text-2xl font-black">YES</span>
+                        <span className="text-[10px] text-white/40 uppercase tracking-widest">53% believe</span>
+                      </div>
+                      <div className="p-6 rounded-2xl bg-brand-purple/5 border border-brand-purple/20 flex flex-col items-center gap-2 group cursor-pointer hover:bg-brand-purple/10 transition-all">
+                        <span className="text-2xl font-black">NO</span>
+                        <span className="text-[10px] text-white/40 uppercase tracking-widest">47% believe</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2 text-white/40">
+                      <Coins className="w-4 h-4" />
+                      <span className="text-[10px] font-bold uppercase tracking-widest">Stake Amount</span>
+                    </div>
+                    <div className="relative">
+                      <input 
+                        type="text" 
+                        defaultValue="100"
+                        className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 text-xl font-black outline-none focus:border-brand-emerald/50 transition-colors"
+                      />
+                      <span className="absolute right-5 top-1/2 -translate-y-1/2 text-[10px] font-bold text-white/40 uppercase tracking-widest">Evumus</span>
+                    </div>
+                  </div>
+
+                  <div className="p-6 rounded-2xl bg-brand-emerald/5 border border-brand-emerald/20 space-y-3">
+                    <div className="flex items-center gap-3">
+                      <Sparkles className="w-4 h-4 text-brand-emerald" />
+                      <span className="text-xs font-bold">Stake 100 Evumus to win 10% boost</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-white/40">
+                      <Calendar className="w-4 h-4" />
+                      <span className="text-[10px] font-bold">+7 days staking time in case of loss</span>
+                    </div>
+                  </div>
+
+                  <button className="w-full py-6 bg-brand-dark border border-brand-emerald/50 text-white font-black uppercase tracking-[0.2em] rounded-2xl hover:glow-cyan transition-all flex items-center justify-center gap-3">
+                    <Zap className="w-5 h-5" />
+                    Stake & Predict
+                  </button>
                 </motion.div>
               )}
             </AnimatePresence>
