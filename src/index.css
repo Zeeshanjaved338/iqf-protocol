@@ -35,6 +35,16 @@
   .glow-purple {
     box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
   }
+
+  /* Hide scrollbar but keep scrolling */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE */
+  scrollbar-width: none;     /* Firefox */
+}
 }
 
 @keyframes float {

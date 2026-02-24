@@ -3,13 +3,9 @@ import { Menu, X, ArrowRight, Globe, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: "Economy", href: "#economy" },
-    { name: "Intelligence", href: "#intelligence" },
-    { name: "Governance", href: "#governance" },
-    { name: "Ecosystem", href: "#ecosystem" },
   ];
 
   return (
@@ -25,15 +21,15 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+           {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 className="text-sm font-medium text-white/70 hover:text-white transition-colors"
               >
                 {link.name}
-              </a>
-            ))}
+              </a> 
+            ))} 
             
             <div className="flex items-center gap-4">
               <button className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-medium hover:bg-white/10 transition-all">
@@ -78,6 +74,7 @@ export default function Navbar() {
               {link.name}
             </a>
           ))}
+          
           <button className="w-full py-4 bg-brand-emerald text-black font-bold rounded-xl mt-4">
             Launch App
           </button>

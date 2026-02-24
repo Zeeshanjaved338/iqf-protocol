@@ -48,7 +48,7 @@ const APPS = [
     preview: (
       <div className="p-6 space-y-6">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-bold uppercase tracking-widest">Portfolio</span>
+          <span className="text-xs font-black uppercase tracking-widest">Portfolio</span>
           <span className="text-xs font-black text-brand-emerald">$24,587.32</span>
         </div>
 
@@ -86,7 +86,7 @@ const APPS = [
     preview: (
       <div className="p-6 space-y-6">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-bold uppercase tracking-widest">Featured Collections</span>
+          <span className="text-xs font-black uppercase tracking-widest">Featured Collections</span>
         </div>
 
         <div className="grid grid-cols-2 gap-4">
@@ -237,7 +237,7 @@ export default function IillooSection() {
                 </div>
 
                 {/* App Preview Window */}
-                <div className="bg-[#0a0a0c] rounded-xl border border-white/10 overflow-hidden min-h-[400px]">
+                <div className="bg-[#0a0a0c] rounded-xl border border-white/10 overflow-hidden min-h-[400px] relative">
                   <div className="bg-white/5 px-4 py-2 border-bottom border-white/5 flex items-center gap-4">
                     <div className="flex gap-1">
                       <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
@@ -260,14 +260,14 @@ export default function IillooSection() {
                       {APPS[appIndex].preview}
                     </motion.div>
                   </AnimatePresence>
+
+                  {/* Floating building indicator - Moved inside */}
+                  <div className="absolute bottom-4 right-4 bg-brand-dark/80 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-full flex items-center gap-2 shadow-2xl z-20">
+                    <div className="w-1.5 h-1.5 rounded-full bg-brand-emerald animate-pulse" />
+                    <span className="text-[8px] font-bold uppercase tracking-widest text-white/60">Building...</span>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            {/* Floating building indicator */}
-            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-brand-dark border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 shadow-2xl">
-              <div className="w-2 h-2 rounded-full bg-brand-emerald animate-pulse" />
-              <span className="text-[8px] font-bold uppercase tracking-widest text-white/60">Building...</span>
             </div>
           </motion.div>
 

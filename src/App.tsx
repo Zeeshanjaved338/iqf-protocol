@@ -10,11 +10,8 @@ import Miners from "./components/Miners";
 import PredictMe from "./components/PredictMe";
 import CreatorBenefits from "./components/CreatorBenefits";
 import IillooSection from "./components/IillooSection";
+import Workforce from "./components/Workforce";
 import IntelligenceLayer from "./components/IntelligenceLayer";
-import Pillars from "./components/Pillars";
-import Features from "./components/Features";
-import Roadmap from "./components/Roadmap";
-import Community from "./components/Community";
 import Footer from "./components/Footer";
 
 export default function App() {
@@ -28,11 +25,8 @@ export default function App() {
         <PredictMe />
         <CreatorBenefits />
         <IillooSection />
+        <Workforce /> 
         <IntelligenceLayer />
-        <Pillars />
-        <Features />
-        <Roadmap />
-        <Community />
       </main>
       <Footer />
     </div>
