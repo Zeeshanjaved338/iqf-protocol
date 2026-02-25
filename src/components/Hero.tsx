@@ -5,10 +5,28 @@ import { useEffect, useState } from "react";
 const CountdownBox = ({ value, label }: { value: string; label: string }) => (
   <div className="flex flex-col items-center">
     <div className="w-16 h-20 md:w-20 md:h-24 glass rounded-2xl flex items-center justify-center border border-white/10 relative group overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-brand-purple/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-      <span className="text-3xl md:text-4xl font-bold tracking-tight text-white">{value}</span>
+      {/* Moving Border Beam */}
+      <motion.div
+        className="absolute inset-0 z-0"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+        style={{
+          background: "conic-gradient(from 0deg, transparent 0%, transparent 80%, #a855f7 100%)",
+          width: '200%',
+          height: '200%',
+          left: '-50%',
+          top: '-50%',
+        }}
+      />
+      
+      {/* Inner background to keep the glass look while hiding the center of the conic gradient */}
+      <div className="absolute inset-[1px] bg-[#0a0a0c]/80 backdrop-blur-xl rounded-2xl z-[1]" />
+
+      <div className="absolute inset-0 bg-gradient-to-b from-brand-purple/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-[2]" />
+      <span className="text-3xl md:text-4xl font-bold tracking-tight text-white relative z-[3]">{value}</span>
+      
       {/* Glow effect */}
-      <div className="absolute -inset-[1px] rounded-2xl border border-brand-emerald/30 blur-[2px] pointer-events-none" />
+      <div className="absolute -inset-[1px] rounded-2xl border border-brand-emerald/30 blur-[2px] pointer-events-none z-[4]" />
     </div>
     <span className="text-[10px] font-mono uppercase tracking-widest text-white/40 mt-2">{label}</span>
   </div>
@@ -134,7 +152,7 @@ export default function Hero({ onEnterProtocol }: { onEnterProtocol?: () => void
             </svg>
           </div>
           <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-gradient-purple">
-            Evumus AI
+            IQF PROTOCOL
           </h1>
         </motion.div>
 
@@ -185,7 +203,7 @@ export default function Hero({ onEnterProtocol }: { onEnterProtocol?: () => void
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
-          className="grid grid-cols-3 gap-12 md:gap-24 border-t border-white/5 pt-12"
+          className="grid grid-cols-3 gap-8 md:gap-18 border-t border-white/5 pt-12"
         >
           <div className="text-center">
             <div className="text-2xl md:text-3xl font-bold text-brand-purple">100%</div>

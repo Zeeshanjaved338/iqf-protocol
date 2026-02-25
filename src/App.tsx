@@ -12,7 +12,6 @@ import PredictMe from "./components/PredictMe";
 import CreatorBenefits from "./components/CreatorBenefits";
 import IillooSection from "./components/IillooSection";
 import Workforce from "./components/Workforce";
-import IntelligenceLayer from "./components/IntelligenceLayer";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
 
@@ -31,7 +30,6 @@ export default function App() {
         <CreatorBenefits />
         <IillooSection />
         <Workforce /> 
-        <IntelligenceLayer />
       </main>
       <Footer />
     </div>
