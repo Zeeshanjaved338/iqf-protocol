@@ -13,7 +13,7 @@ const DashboardMetric = ({ label, value, icon: Icon, color }: any) => (
 
 export default function Vision() {
   return (
-    <section className="py-24 relative overflow-hidden bg-[#0a0a0c]">
+    <section id="vision" className="py-24 relative overflow-hidden bg-[#0a0a0c]">
       {/* Background Visuals */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {/* Main Background Image - Matching the user's request (Cubes/Tech) */}

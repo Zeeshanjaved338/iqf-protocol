@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Vision from "./components/Vision";
@@ -13,13 +14,17 @@ import IillooSection from "./components/IillooSection";
 import Workforce from "./components/Workforce";
 import IntelligenceLayer from "./components/IntelligenceLayer";
 import Footer from "./components/Footer";
+import Login from "./components/Login";
 
 export default function App() {
+  const [showLogin, setShowLogin] = useState(false);
+
   return (
     <div className="min-h-screen bg-brand-dark overflow-x-hidden">
-      <Navbar />
+      {showLogin && <Login onClose={() => setShowLogin(false)} />}
+      <Navbar onConnect={() => setShowLogin(true)} />
       <main>
-        <Hero />
+        <Hero onEnterProtocol={() => setShowLogin(true)} />
         <Vision />
         <Miners />
         <PredictMe />

@@ -217,7 +217,7 @@ export default function IillooSection() {
               <div className="bg-white/5 px-4 py-3 border-bottom border-white/5 flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div className="w-2 h-2 rounded-full bg-brand-purple" />
-                  <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Evumus Systems v3.1.4</span>
+                  <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest">IQF Systems v3.1.4</span>
                 </div>
                 <div className="flex gap-1.5">
                   <div className="w-2.5 h-2.5 rounded-full bg-red-500/20 border border-red-500/40" />
@@ -310,9 +310,9 @@ export default function IillooSection() {
                 </div>
                 <div className="flex-1">
                   <div className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1">Powered by</div>
-                  <h4 className="text-2xl font-black mb-4">Evumus AI Network</h4>
+                  <h4 className="text-2xl font-black mb-4">IQF AI Network</h4>
                   <p className="text-sm text-white/60 leading-relaxed">
-                    Every app built on iilloo is powered by the Evumus token ecosystem, creating value for miners and token holders.
+                    Every app built on iilloo is powered by the IQF token ecosystem, creating value for miners and token holders.
                   </p>
                 </div>
               </div>

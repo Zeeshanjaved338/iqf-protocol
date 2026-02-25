@@ -178,7 +178,7 @@ export const Footer = () => {
         {/* Copyright */}
         <div className="mt-24 pt-8 border-t border-white/5 w-full text-center">
           <p className="text-[10px] font-medium text-zinc-600 uppercase tracking-[0.3em]">
-            © 2024 EVUMUS AI • ALL RIGHTS RESERVED
+            © 2024 IQF PROTOCOL • ALL RIGHTS RESERVED
           </p>
         </div>
       </div>

@@ -14,7 +14,7 @@ const CountdownBox = ({ value, label }: { value: string; label: string }) => (
   </div>
 );
 
-export default function Hero() {
+export default function Hero({ onEnterProtocol }: { onEnterProtocol?: () => void }) {
   const [timeLeft, setTimeLeft] = useState({ d: "33", h: "05", m: "15", s: "37" });
 
   // Simple countdown logic simulation
@@ -28,6 +28,13 @@ export default function Hero() {
     }, 1000);
     return () => clearInterval(timer);
   }, []);
+
+  const scrollToVision = () => {
+    const visionSection = document.getElementById('vision');
+    if (visionSection) {
+      visionSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-40 overflow-hidden bg-[#0a0a0c]">
@@ -139,7 +146,7 @@ export default function Hero() {
           className="mb-12"
         >
           <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-            The Future is <span className="text-brand-purple">||</span>
+            The Future is Predictable<span className="text-brand-purple">|</span>
           </h2>
           <div className="space-y-2 text-lg md:text-xl font-medium text-white/70">
             <p>Where AI meets <span className="text-brand-emerald">Web3</span>.</p>
@@ -155,14 +162,20 @@ export default function Hero() {
           transition={{ delay: 0.8 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-20"
         >
-          <button className="group relative px-8 py-4 bg-brand-dark rounded-xl border border-brand-emerald/50 text-white font-bold transition-all hover:glow-cyan">
+          <button 
+            onClick={onEnterProtocol}
+            className="group relative px-8 py-4 bg-brand-dark rounded-xl border border-brand-emerald/50 text-white font-bold transition-all hover:glow-cyan"
+          >
             <div className="absolute inset-0 bg-brand-emerald/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
             <span className="relative flex items-center gap-2">
               Enter the Protocol <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </span>
           </button>
           
-          <button className="px-8 py-4 bg-white/5 border border-white/10 rounded-xl text-white font-bold hover:bg-white/10 transition-all">
+          <button 
+            onClick={scrollToVision}
+            className="px-8 py-4 bg-white/5 border border-white/10 rounded-xl text-white font-bold hover:bg-white/10 transition-all"
+          >
             Explore Vision
           </button>
         </motion.div>
